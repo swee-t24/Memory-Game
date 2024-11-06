@@ -1,3 +1,5 @@
+let score = 0;
+consecutiveMatches = 0;
 function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active'); 
@@ -7,15 +9,12 @@ function showSection(sectionId) {
 
 function startGame() {
     showSection('game');
-    initializeGame();
-    
+    initializeGame();   
 }
-
 const images = [
     'img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg','img-14.jpg','img-13.jpg','img-11.jpg','img-12.jpg',
     'img-5.jpg', 'img-6.jpg', 'img-7.jpg', 'img-8.jpg', 'img-9.jpg', 'img-10.jpg',
 ];
-
 function initializeGame() {
     const gameBoard = document.getElementById('game-board');
     gameBoard.innerHTML = ''; 
@@ -27,6 +26,9 @@ function initializeGame() {
         card.classList.add('card');
         card.dataset.image = image;
 
+    // card++
+    // score = card * 10;
+
         const img = document.createElement('img');
         img.src = image;
         img.style.display = 'none';
@@ -34,10 +36,15 @@ function initializeGame() {
         card.addEventListener('click', () => flipCard(card));
         gameBoard.appendChild(card);
     });
+// function checkForMatch(){
+//     const (image, image) = flipCard;
+//     if (image.getAttribute(''))
+// }
+    // consecutiveMatches++
+    // score = consecutiveMatches * 10;
 
-    const maxTime = 30; 
+    const maxTime = 90; 
     let timeRemaining = maxTime;
-    let score = 0;
     let gameFinished = false;
 
     const timeRemainingDisplay = document.getElementById("timeRemaining");
@@ -63,20 +70,13 @@ function initializeGame() {
                 gameFinished = true; 
                 clearInterval(timer);
                 finishButton.disabled = true; 
-                score = timeRemaining * 10;
-                scoreDisplay.textContent = score;
+                // score = timeRemaining * 10;
+                // scoreDisplay.textContent = score;
                 finishButton.innerHTML= `<div class="alert alert-primary">You finished the game! Your final score is: ${score}</div>`;
                                                
         }
     }
 }
-// function updateCountdown(){
-//     const min = math.floor(time / 60);
-//     let sec = time % 60;
-//     sec = sec < 2 ? '0' + sec : sec
-//     countdown.innerHTML = `${sec}`;
-//     time--;
-// }
 
 let firstCard, secondCard;
 function flipCard(card) {

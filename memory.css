@@ -8,7 +8,7 @@ body, html {
     font-family: 'Arial', sans-serif;
     /* height: 40%; */
     overflow: hidden;
-    color: #333;
+    color: #5c3525;
     background-image: url(body.img);
     background-repeat: no-repeat;
     background-size:cover;
@@ -22,8 +22,8 @@ body, html {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: rgba(51, 51, 51, 0.8);
-    color: #fff;
+    background-color:#628a41;
+    color: #5c3525;
     position: fixed;
     top: 0;
     width: 100%;
@@ -33,7 +33,7 @@ body, html {
 .navbar .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #ffcc00;
+    color: #5c3525;
 }
 
 .nav-links {
@@ -46,14 +46,14 @@ body, html {
 }
 
 .nav-links a {
-    color: #fff;
+    color: #5c3525;
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #ffcc00;
+    color: #5c3525;
 }
 
 .section {
@@ -73,7 +73,7 @@ body, html {
 
 #home {
     background: url('background.jpg') no-repeat center center/cover;
-    color: #fff;
+    color: #5c3525;
     position: relative;
 }
 
@@ -83,7 +83,7 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: #ceecb3;
     z-index: 1;
 }
 
@@ -96,21 +96,22 @@ body, html {
 
 #home h1 {
     font-size: 4rem;
-    color: #ffcc00;
+    color: #5c3525;
     margin-bottom: 1rem;
 }
 
 #home p {
     font-size: 1.5rem;
-    color: #ffcc00;
+    color: #5c3525;
     margin-bottom: 2rem;
 }
 
 .start-game-btn {
     padding: 1rem 2.5rem;
     font-size: 1.5rem;
-    color: #333;
-    background-color: #ffcc00;
+    color: #552e1f;
+    font-weight: bolder;
+    background-color: #517a2e;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -118,7 +119,7 @@ body, html {
 }
 
 .start-game-btn:hover {
-    background-color: #ffd633;
+    background-color: #517a2e;
     transform: scale(1.05);
 }
 
@@ -129,14 +130,14 @@ body, html {
 }
 
 #howToPlay, #game {
-    background-color: #f9f9f9;
+    background-color: #ceecb3;
     padding: 4rem 2rem;
-    color: #333;
+    color: #5c3525;
 }
 
 #howToPlay h2, #game h2 {
     font-size: 2.5rem;
-    color: #333;
+    color: #5c3525;
     margin-bottom: 1rem;
 }
 
@@ -146,8 +147,6 @@ body, html {
     grid-template-columns: repeat(4, 1fr);
     max-width: 491px;
     /* margin: 2rem auto; */
-    /* background-color: rgb(32, 32, 56); */
-    border: 1px rgb(45, 45, 65) solid;
     height: 417px;
     
     /* margin-bottom: 15px; */
@@ -156,7 +155,7 @@ body, html {
 .card {
     width:81px;
     height: 50%;
-    border: 13px red solid;
+    /* border: 13px red solid; */
     background-image: url(card.jpg);
     background-position: center;
     border-radius: 8px;
@@ -165,7 +164,7 @@ body, html {
     justify-content: center;
     cursor: pointer;
     font-size: 1.5rem;
-    color: #fff;
+    color: #5c3525;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }
@@ -190,7 +189,7 @@ body, html {
     color: rgb(133, 0, 0);
 }
 #tryAgainButton{
-    background-color: rgba(48, 146, 48, 0.788);
+    background-color: #517a2e;
     color: #ffcc00;
     border-radius: 7px;
     width: 171px;
@@ -200,11 +199,21 @@ body, html {
 }
 
 #finishbutton{
-    background-color: #3982f0;
-    color: #ffcc00;
+    background-color: #517a2e;
+    color: #fd8e5f73;
     margin-top: 7px;
     margin-bottom: 74px;
     border-radius: 7px;
     width: 101px;
     height: 31px;
+    font-weight: bolder;
+}
+
+#help{
+    margin-right: 17px;
+}
+#Contact{
+    padding: 17px;
+    border: 2px red solid;
+    background-color:#ceecb3;
 }
