@@ -145,37 +145,100 @@ function checkForMatch() {
           cardTwo.textContent = '';
   }
 
-  flippedCards = [];
-  document.getElementById('score').textContent = score;
+//   flippedCards = [];
+//   document.getElementById('score').textContent = score;
 
-function endGame() {
-  document.querySelector('.grid').style.display = 'none';
-  document.getElementById('final-score').textContent = score;
-  document.getElementById('game-over').style.display = 'block';
+// function endGame() {
+//   document.querySelector('.grid').style.display = 'none';
+//   document.getElementById('final-score').textContent = score;
+//   document.getElementById('game-over').style.display = 'block';
   
-  // Fetch quote from API
-  fetch('https://api.quotable.io/random')
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('quote').textContent = data.content;
-    })
-    .catch(() => {
-      document.getElementById('quote').textContent = "Could not load a quote.";
-    });
-}
-}
-initializeGame();
+//   // Fetch quote from API
+//   fetch('https://api.quotable.io/random')
+//     .then(response => response.json())
+//     .then(data => {
+//       document.getElementById('quote').textContent = data.content;
+//     })
+//     .catch(() => {
+//       document.getElementById('quote').textContent = "Could not load a quote.";
+//     });
+// }
+// }
+// initializeGame();
 
 
-const tryAgainButton = document.getElementById('tryAgainButton');
-function initGame() {
-    tryAgainButton.style.display = 'none';
-}
-function resetGame() {
-    startGame();
-}
+// const tryAgainButton = document.getElementById('tryAgainButton');
+// function initGame() {
+//     tryAgainButton.style.display = 'none';
+// }
+// function resetGame() {
+//     startGame();
+// }
 
-function resetCards() {
+// function resetCards() {
+//     firstCard = null;
+//     secondCard = null;
+// }
+function checkForMatch() {
+    if (firstCard.dataset.value === secondCard.dataset.value) {
+        // Matched, increase score
+        score += 10;
+        scoreDisplay.textContent = score;
+        flippedCards += 2;
+        if (flippedCards === shuffledCards.length) {
+            endGame();
+        }
+    } else {
+        // Not a match, flip back after a delay
+        setTimeout(() => {
+            firstCard.classList.remove('flipped');
+            firstCard.textContent = '';
+            secondCard.classList.remove('flipped');
+            secondCard.textContent = '';
+        }, 1000);
+    }
+
     firstCard = null;
     secondCard = null;
+}
+
+// Start the countdown timer
+function startTimer() {
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timeLeftDisplay.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            endGame();
+        }
+    }, 1000);
+}
+
+// End the game
+function endGame() {
+    clearInterval(timerInterval);
+    finalScore.textContent = score;
+    fetchQuote();
+    endMessage.classList.remove('hidden');
+}
+
+// Fetch a random quote from an API
+async function fetchQuote() {
+    try {
+        const response = await fetch('https://api.quotable.io/random');
+        const data = await response.json();
+        quoteDisplay.textContent = `"${data.content}" — ${data.author}`;
+    } catch (error) {
+        quoteDisplay.textContent = '“Time is up!”';
+    }
+}
+
+// Initialize the game
+function startGame() {
+    createCards();
+    startTimer();
+}
+
+startGame();
 }
