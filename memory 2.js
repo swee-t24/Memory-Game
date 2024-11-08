@@ -1,5 +1,7 @@
 let score = 0;
-consecutiveMatches = 0;
+let consecutiveMatches = 0;
+let flippedCards = [];
+
 function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active'); 
@@ -12,8 +14,8 @@ function startGame() {
     initializeGame();   
 }
 const images = [
-    'img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg','img-14.jpg','img-13.jpg','img-11.jpg','img-12.jpg',
-    'img-5.jpg', 'img-6.jpg', 'img-7.jpg', 'img-8.jpg', 'img-9.jpg', 'img-10.jpg',
+    'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg',
+    'img5.jpg', 'img6.jpg', 'img7.jpg', 'img8.jpg', 'img9.jpg', 'img10.jpg',
 ];
 function initializeGame() {
     const gameBoard = document.getElementById('game-board');
@@ -26,9 +28,6 @@ function initializeGame() {
         card.classList.add('card');
         card.dataset.image = image;
 
-    // card++
-    // score = card * 10;
-
         const img = document.createElement('img');
         img.src = image;
         img.style.display = 'none';
@@ -36,12 +35,13 @@ function initializeGame() {
         card.addEventListener('click', () => flipCard(card));
         gameBoard.appendChild(card);
     });
+
 // function checkForMatch(){
-//     const (image, image) = flipCard;
-//     if (image.getAttribute(''))
+//     const [image, image] = flipCard;
+//     if (image.getAttribute('') === )
 // }
-    // consecutiveMatches++
-    // score = consecutiveMatches * 10;
+//     consecutiveMatches++
+//     score = consecutiveMatches * 10;
 
     const maxTime = 9; 
     let timeRemaining = maxTime;
@@ -58,9 +58,28 @@ function initializeGame() {
 
             if (timeRemaining <= 0) {
                 clearInterval(timer);
-                finishButton.disabled = true;  
-                gameBoard.innerHTML=`<img src= slow.jpg height=381px>`+
-                `<button id="tryAgainButton" height = 24px onclick="resetGame()">Try Again</button>`;                                      
+                finishButton.disabled = true; 
+                endgame(); 
+                // gameBoard.innerHTML=`<img src= slow.jpg height=381px>`
+//                 `<button id="tryAgainButton" height = 24px onclick="resetGame()">Try Again</button>`+
+//                 `async function fetchQuote() {
+//     try {
+//         const response = await fetch("https://api.quotable.io/random"); 
+//         const data = await response.json();
+        
+//         displayQuote(data.content, data.author);
+//         } 
+//         function displayQuote(quote, author) {
+//           alert("${quote}" - ${author});
+//  }
+
+        function checkGameStatus(playerLost) {
+          if (playerLost) {
+          fetchQuote();
+}
+}
+
+checkGameStatus(true);                                      
             }
         }
     }, 1000);  
@@ -76,7 +95,7 @@ function initializeGame() {
                                                
         }
     }
-}
+ }
 
 let firstCard, secondCard;
 function flipCard(card) {
@@ -108,7 +127,45 @@ function checkForMatch() {
             resetCards();
         }, 1000);
     }
+
+        const [cardOne, cardTwo] = flippedCards;
+        
+        if (cardOne.getAttribute('data-name') === cardTwo.getAttribute('data-name')) {
+          cardOne.classList.add('matched');
+          cardTwo.classList.add('matched');
+
+          consecutiveMatches++;
+          score += 10 * consecutiveMatches;
+        }
+        else() => {
+          consecutiveMatches = 0; 
+          cardOne.classList.remove('flipped');
+          cardTwo.classList.remove('flipped');
+          cardOne.textContent = '';
+          cardTwo.textContent = '';
+  }
+
+  flippedCards = [];
+  document.getElementById('score').textContent = score;
+
+function endGame() {
+  document.querySelector('.grid').style.display = 'none';
+  document.getElementById('final-score').textContent = score;
+  document.getElementById('game-over').style.display = 'block';
+  
+  // Fetch quote from API
+  fetch('https://api.quotable.io/random')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('quote').textContent = data.content;
+    })
+    .catch(() => {
+      document.getElementById('quote').textContent = "Could not load a quote.";
+    });
 }
+}
+initializeGame();
+
 
 const tryAgainButton = document.getElementById('tryAgainButton');
 function initGame() {
