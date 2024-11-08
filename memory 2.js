@@ -54,12 +54,12 @@ function initializeGame() {
     const timer = setInterval(() => {
         if (!gameFinished) {
              timeRemaining--;
-             timeRemainingDisplay.textContent = timeRemaining;
+             timeRemainingDisplay.textContent = timeRemaining;}
 
             if (timeRemaining <= 0) {
                 clearInterval(timer);
                 finishButton.disabled = true; 
-                endgame(); 
+                endgame(); })
                 // gameBoard.innerHTML=`<img src= slow.jpg height=381px>`
 //                 `<button id="tryAgainButton" height = 24px onclick="resetGame()">Try Again</button>`+
 //                 `async function fetchQuote() {
@@ -73,16 +73,16 @@ function initializeGame() {
 //           alert("${quote}" - ${author});
 //  }
 
-        function checkGameStatus(playerLost) {
-          if (playerLost) {
-          fetchQuote();
-}
-}
+//     function checkGameStatus(playerLost) {
+//           if (playerLost) {
+//           fetchQuote();
+// }
+// }
 
-checkGameStatus(true);                                      
-            }
-        }
-    }, 1000);  
+// checkGameStatus(true);                                      
+//             }
+//         }
+//     }, 1000);  
 
     function finishGame() {
              if (!gameFinished) {
@@ -114,13 +114,13 @@ function flipCard(card) {
 }
 
 function checkForMatch() {
-    const isMatch = firstCard.dataset.image === secondCard.dataset.image;
+    const isMatch = firstCard.image === secondCard.image;
 
     if (isMatch) {
         resetCards();
     } else {
         setTimeout(() => {
-            firstCard.classList.remove('flipped');
+            firstCard.remove('flipped');
             firstCard.querySelector('img').style.display = 'none';
             secondCard.classList.remove('flipped');
             secondCard.querySelector('img').style.display = 'none';
@@ -234,7 +234,6 @@ async function fetchQuote() {
     }
 }
 
-// Initialize the game
 function startGame() {
     createCards();
     startTimer();
@@ -242,3 +241,5 @@ function startGame() {
 
 startGame();
 }
+        
+    
