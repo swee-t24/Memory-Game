@@ -40,6 +40,7 @@ const maxTime = 7;
         let timeRemaining = maxTime;
         let score = 0;
         let gameFinished = false;
+        let flippedcard = 0;
  
         function increaseScore(points) {
             score += points;
@@ -56,28 +57,25 @@ const maxTime = 7;
 
                 if (timeRemaining <= 0) {
                     clearInterval(timer);
-                    finishButton.disabled = true;  
+                    
                     gameBoard.innerHTML=`<img src="slow.jpg" height=381px><br>
                     <button id="tryAgainButton" onclick="resetGame()">Try Again</button>`+
-                    `<div class="alert alert-primary">You finished the game! Your final score is: ${score}</div>`;                                      
+                    `<div class="alert alert-primary">Your final score is: ${score}</div>`;                                      
                 }
+                       
             }
         }, 1000);  
-
-        function finishGame() {
-            if (!gameFinished) {
-                gameFinished = true; 
-                clearInterval(timer);
-                finishButton.disabled = true; 
-                finishButton.innerHTML= `<div class="alert alert-primary">You finished the game! Your final score is: ${score}</div>`;
-                score = timeRemaining * 10;
-                scoreDisplay.textContent = score;
-                
-               
-            }
+        if (!gameFinished); {
+            gameFinished = true; 
+            clearInterval(timer);                      
+            gameBoard.innerHTML= `<div class="alert alert-primary">You finished the game! Your final score is: ${score}</div>`;
+            score = flippedcard * 10;
+            scoreDisplay.textContent = score;
+                              
         }
+    }        
        
-}
+
 
 
 let firstCard, secondCard;
