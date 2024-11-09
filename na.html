@@ -8,95 +8,74 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="memory 2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chango&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="na.css">
 <style>
+    @import "bootstrap/scss/bootstrap";
     @import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
     </style>
-    <style type="text/css">
-        .fa-house                     
-       {
-         font-size: 21px;
-         color: #5c3525;
-        }
-        .fa-question                     
-       {
-         font-size: 21px;
-         color: #5c3525;
-        }
-        .fa-envelope                     
-       {
-         font-size: 21px; 
-         font-weight: bold;        
-         width: 27px;
-         height: 22px;
-         /* background-image: linear-gradient(to right, blue, red, orange, yellow, green); */
-         color: white; 
-         border-radius: 8px;
-         /* border: 1px red solid; */
-        }
-        .fa-facebook                    
-       {
-         font-size: 21px;
-         color: rgb(19, 19, 252);
-         /* border: 1px white solid;
-         border-radius: 9px;
-         background-color: white;
-         padding-top: 7px;
-         border-width: 3px; */
-         
-        }
-        .fa-telegram                     
-       {
-         font-size: 21px;
-         color: rgb(58, 126, 230);
-         /* border: 2px white solid;
-         border-radius: 4px; */
-        }
-    </style>
+<style type="text/css">
+    .fa-house                     
+    {
+      font-size: 21px;
+      color: #5c3525;
+     }
+     .fa-question                     
+    {
+      font-size: 21px;
+      color: #5c3525;
+     }
+     .fa-envelope                     
+    {
+      font-size: 21px; 
+      font-weight: bold;        
+      width: 27px;
+      height: 22px;
+      /* background-image: linear-gradient(to right, blue, red, orange, yellow, green); */
+      color: white; 
+      border-radius: 8px;
+     }
+     .fa-facebook                    
+    {
+      font-size: 21px;
+      color: rgb(19, 19, 252);
+     }
+     .fa-telegram                     
+    {
+      font-size: 21px;
+      color: rgb(58, 126, 230);
+     }
+ </style>
 </head>
 <body>
- 
     <nav class="navbar" class="sm">
         <div class="home"><a href="#" onclick="showSection('home')"><i class="fa-solid fa-house"></i></a></div>
         <ul class="nav-links">           
             <div class="logo">Memory Match</div>
             <div class="Help"><a href="#" onclick="showSection('howToPlay')">Help</i></a></div>
         </ul>
-    </nav>
-       
-    <section id="home" class="section active" class="sm">
+    </nav><br><br>
+        
+    <section id="home" class="section active">
         <div class="overlay"></div>
         <div class="content">
             <h1 style="
-            font-family: Chango, sans-serif;
-            font-weight: 400;
-            font-style: normal;
-          ">Memory Match</h1>
+                    font-family: Chango, sans-serif;
+                    font-weight: 400;
+                    font-style: normal; ">Memory Match</h1>
             <p>Flip the cards, match the pairs, and challenge your memory!</p>
-            <link href="css/bootstrap.min.css" rel="stylesheet">
             <button class="start-game-btn" onclick="startGame()">Start Game</button>
-
             <div class="icon">
                 <a href= "mailto:ruhamaalemu31@gmail.com" ><i class="fa-regular fa-envelope"></i></a>
                 <a href="https://www.facebook.com/profile.php?id=61560543073400" ><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://t.me/googo_tech_school" ><i class="fa-brands fa-telegram"></i></a>
                 <p style="color: #5c3525; font-size: small;">Contact Us</p>
             </div>
-        
-    
-            <!-- <footer>
-                <p>&copy; 2024 Memorable Game. All rights reserved.</p>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Contact Us</a>
-                </div>
-            </footer> -->
         </div>
     </section>
+
     <section id="howToPlay" class="section">
         <div class="content">
             <h2>How to Play</h2>
@@ -113,20 +92,19 @@
         </div>
     </section>
 
-    <section id="game" class="section sm">
+    <section id="game" class="section">
         <div class="Game" >
-            <!-- <h2 class="color">Memory Match Game</h2>     -->
+            
             <p>Time Remaining: <span id="timeRemaining">90</span> seconds</p>       
             <h4>Your Score: <span id="score">0</span></h4>
             <div id="game-board" class="game-board"></div>
-             <button id="finishbutton" onclick="finishGame()">Finish Game</button>                    
-        </div>   
-           
-            <!-- <button id="tryAgainButton" onclick="resetGame()">Try Again</button>       -->
+            <button id="finishbutton" onclick="finishGame()"></button>       
+            
+        </div>                                                              
     </section>
-   
-    <script src="memory 2.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
 
+    <script src="na.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

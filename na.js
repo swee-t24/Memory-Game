@@ -8,11 +8,12 @@ function showSection(sectionId) {
 function startGame() {
     showSection('game');
     initializeGame();
+    
 }
 
 const images = [
-    'img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg',
-    'img-5.jpg', 'img-6.jpg', 'img-7.jpg', 'img-8.jpg', 'img-9.jpg', 'img-10.jpg',
+    'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg',
+    'img5.jpg', 'img6.jpg', 'img7.jpg', 'img8.jpg', 'img9.jpg', 'img10.jpg',
 ];
 
 function initializeGame() {
@@ -34,21 +35,50 @@ function initializeGame() {
         card.addEventListener('click', () => flipCard(card));
         gameBoard.appendChild(card);
     });
+
+const maxTime = 7; 
+        let timeRemaining = maxTime;
+        let score = 0;
+        let gameFinished = false;
+ 
+        function increaseScore(points) {
+            score += points;
+            document.getElementById("scoreDisplay").textContent = `Score: ${score}`;
+        }
+        const timeRemainingDisplay = document.getElementById("timeRemaining");
+        const scoreDisplay = document.getElementById("score");
+        const finishButton = document.getElementById("finishbutton");
+
+        const timer = setInterval(() => {
+            if (!gameFinished) {
+                timeRemaining--;
+                timeRemainingDisplay.textContent = timeRemaining;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timer);
+                    finishButton.disabled = true;  
+                    gameBoard.innerHTML=`<img src="slow.jpg" height=381px><br>
+                    <button id="tryAgainButton" onclick="resetGame()">Try Again</button>`+
+                    `<div class="alert alert-primary">You finished the game! Your final score is: ${score}</div>`;                                      
+                }
+            }
+        }, 1000);  
+
+        function finishGame() {
+            if (!gameFinished) {
+                gameFinished = true; 
+                clearInterval(timer);
+                finishButton.disabled = true; 
+                finishButton.innerHTML= `<div class="alert alert-primary">You finished the game! Your final score is: ${score}</div>`;
+                score = timeRemaining * 10;
+                scoreDisplay.textContent = score;
+                
+               
+            }
+        }
+       
 }
 
-let staringmin = 7;
-
-const massage = document.getElementById("game-board");
-const countdown = document.getElementById("countdown");
-const timer = setInterval(() => {
-    countdown.textContent = `Time Left : ${staringmin} seconds`;
-    staringmin--;
-
-    if (staringmin < 0){
-        clearInterval(timer);
-        massage.innerHTML = `<img src="slow.jpg" height="497px" width="777px">`;
-    }
-    }, 1000);
 
 let firstCard, secondCard;
 function flipCard(card) {
@@ -80,7 +110,6 @@ function checkForMatch() {
             resetCards();
         }, 1000);
     }
-    
 }
 const tryAgainButton = document.getElementById('tryAgainButton');
 function initGame() {
@@ -89,6 +118,7 @@ function initGame() {
 function resetGame() {
     startGame();
 }
+
 function resetCards() {
     firstCard = null;
     secondCard = null;
